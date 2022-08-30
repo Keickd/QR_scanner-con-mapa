@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.qr_scanner">
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
    <application
         android:label="qr_scanner"
         android:name="${applicationName}"
@@ -19,6 +20,8 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
+              android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyApnUnTGDGa3i8sB-LfElx05TNXMwGmOGE"
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

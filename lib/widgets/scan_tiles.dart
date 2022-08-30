@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/scan_list_provider.dart';
+import '../utils/utils.dart';
 
 class ScanTiles extends StatelessWidget {
   const ScanTiles({Key? key, required this.tipo}) : super(key: key);
@@ -35,7 +35,9 @@ class ScanTiles extends StatelessWidget {
               Icons.keyboard_arrow_right,
               color: Colors.grey,
             ),
-            onTap: () {},
+            onTap: () {
+              launchUrlFunction(context, scans[i]);
+            },
           ),
         );
       },
