@@ -16,21 +16,47 @@ class _MapaPageState extends State<MapaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final CameraPosition puntoInicial = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962),
-      zoom: 14.4746,
-    );
-
     final ScanModel scan =
         ModalRoute.of(context)!.settings.arguments as ScanModel;
+
+    final CameraPosition puntoInicial = CameraPosition(
+      target: scan.getLatLng(),
+      zoom: 17,
+      tilt: 50,
+    );
+
+    Set<Marker> markers = <Marker>{};
+    markers.add(
+      Marker(
+        markerId: const MarkerId('geo-location'),
+        position: scan.getLatLng(),
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mapa'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                final GoogleMapController controller = await _controller.future;
+                controller.animateCamera(
+                  CameraUpdate.newCameraPosition(
+                    CameraPosition(
+                      target: scan.getLatLng(),
+                      zoom: 17,
+                      tilt: 50,
+                    ),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.location_disabled))
+        ],
       ),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: puntoInicial,
+        markers: markers,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },

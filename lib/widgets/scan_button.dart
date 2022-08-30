@@ -10,7 +10,7 @@ class ScanButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
-        final barCode = '41.674000,-0.870997';
+        final barCode = '41.656529,-0.873916';
 
         if (barCode == '-1') return;
 
