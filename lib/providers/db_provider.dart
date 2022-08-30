@@ -22,7 +22,6 @@ class DBProvider {
   Future<Database> initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'ScansDB.db');
-    print(documentsDirectory);
     return await openDatabase(
       path,
       version: 16,

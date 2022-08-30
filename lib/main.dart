@@ -5,9 +5,11 @@ import 'package:qr_scanner/pages/mapa_page.dart';
 import 'package:qr_scanner/providers/scan_list_provider.dart';
 import 'package:qr_scanner/providers/ui_provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var themeData = ThemeData(
@@ -30,8 +32,8 @@ class MyApp extends StatelessWidget {
         title: 'QR Reader',
         initialRoute: 'home',
         routes: {
-          'home': (_) => HomePage(),
-          'mapa': (_) => MapaPage(),
+          'home': (_) => const HomePage(),
+          'mapa': (_) => const MapaPage(),
         },
         theme: themeData,
       ),
